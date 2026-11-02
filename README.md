@@ -18,9 +18,10 @@ A full-featured doctor appointment booking ("channeling") web app with three rol
 ## Project structure
 
 ```
-channeling-app/
+doctor-channeling-app/
   backend/     Express API (port 4000)
-    routes/    auth, doctors, appointments, prescriptions, reviews, notifications, admin
+    routes/    auth, doctors, centers, sessions, appointments, prescriptions, reviews, notifications, admin
+    lib/       session, queue and booking logic
     db/        JSON file store + data.json
     seed.js    resets data and creates sample doctors/admin/patient
   frontend/    React app (port 5173 in dev)
@@ -33,7 +34,7 @@ You need [Node.js](https://nodejs.org) 18+ installed. Open two terminals.
 
 **Terminal 1 — backend**
 ```
-cd channeling-app/backend
+cd backend
 npm install
 node seed.js        # creates sample doctors, admin, and a demo patient (safe to re-run any time to reset data)
 npm start
@@ -42,7 +43,7 @@ The API runs at `http://localhost:4000`.
 
 **Terminal 2 — frontend**
 ```
-cd channeling-app/frontend
+cd frontend
 npm install
 npm run dev
 ```
