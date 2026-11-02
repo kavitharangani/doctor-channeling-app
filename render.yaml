@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: doctor-channeling-app
+    runtime: node
+    plan: free
+    buildCommand: cd frontend && npm install --include=dev && npm run build && cd ../backend && npm install
+    # The free plan has no permanent disk, so the demo starts from fresh sample data on every boot.
+    startCommand: cd backend && node seed.js && node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20.17.0
+      - key: TZ
+        value: Asia/Colombo
+      - key: JWT_SECRET
+        generateValue: true
